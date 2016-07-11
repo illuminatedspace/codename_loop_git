@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: ecdc7a9faf5258e47ad98332ece39911
+timeCreated: 1461860702
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CharacterSprite_0
+    21300002: CharacterSprite_1
+    21300004: CharacterSprite_2
+    21300006: CharacterSprite_3
+    21300008: CharacterSprite_4
+    21300010: CharacterSprite_5
+    21300012: CharacterSprite_6
+    21300014: CharacterSprite_7
+    21300016: CharacterSprite_8
+    21300018: CharacterSprite_9
+    21300020: CharacterSprite_10
+    21300022: CharacterSprite_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CharacterSprite_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 286
+        width: 39
+        height: 203
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 285
+        width: 66
+        height: 203
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_2
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 284
+        width: 107
+        height: 204
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_3
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 284
+        width: 115
+        height: 207
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_4
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 285
+        width: 92
+        height: 204
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 1, z: 0, w: 0}
+    - name: CharacterSprite_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 284
+        width: 102
+        height: 206
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_6
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 287
+        width: 112
+        height: 208
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_7
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1
+        width: 65
+        height: 204
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 3
+        width: 100
+        height: 207
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1
+        width: 78
+        height: 172
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_10
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 2
+        width: 79
+        height: 191
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CharacterSprite_11
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 62
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

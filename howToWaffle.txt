@@ -1,0 +1,16 @@
+Step #01
+Name branch with # of issue like this
+
+Branch Name:
+Learn-Waffle-Tags#12
+
+Step #02
+Publish branch to the master
+
+Step #3
+Work on Branch with updates
+
+Step #4
+Close branch by updating it with:
+Summary:
+Adds correct waffle tag to commit Closes#12
