@@ -1,0 +1,11 @@
+To Do for Jumping Animation
+
+make collider to trigger landing
+
+make falling and landing animation in unity animator
+
+make character have a bool for if landing collider is touching the ground layer
+
+if character is not touching ground but landing collider is, then trigger landing animation
+
+if character is not touching ground and landing collider is not touching ground then trigger falling aimation
