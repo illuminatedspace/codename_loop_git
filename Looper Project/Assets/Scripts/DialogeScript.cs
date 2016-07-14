@@ -28,11 +28,14 @@ public class DialogeScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         Debug.Log("Entered collider");
         targetColor.a = 1f;
+        TextScript.colorChange = true;
+        TextScript.textChange = true;
     }
 
     void OnTriggerExit2D(Collider2D collider) {
         Debug.Log("Exited collider");
         targetColor.a = 0;
+        TextScript.colorChange = false;
     }
 
 }
