@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PortalBehaviour : MonoBehaviour {
+public class PortalBehavior : MonoBehaviour {
 	
 	// Function for when an object walks into the trigger colider (Should destroy the object).
 	

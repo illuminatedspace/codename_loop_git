@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DialogeScript : MonoBehaviour
+public class DialogueScript : MonoBehaviour
 {
     //public variables
     public SpriteRenderer spriteImg;
