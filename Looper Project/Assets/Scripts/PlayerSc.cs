@@ -66,6 +66,8 @@ public class PlayerSc : MonoBehaviour {
 
 	}
 
+
+
     void Flip()
     {
         // Switch the way the player is labelled as facing.
