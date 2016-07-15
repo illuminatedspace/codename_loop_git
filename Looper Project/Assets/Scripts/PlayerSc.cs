@@ -30,8 +30,8 @@ public class PlayerSc : MonoBehaviour {
 	void Update () // reads in the Vertical/Horizontal input of the player, and applys force to the rigidbody accordingly.
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal") * speed;
-        bool isJumping = MyAnimator.GetBool("Jump");
-        bool isFalling = MyAnimator.GetBool("Falling");
+        //bool isJumping = MyAnimator.GetBool("Jump");
+        //bool isFalling = MyAnimator.GetBool("Falling");
         moveVertical = 0f;
 
         if (Input.GetButtonDown ("Jump") && rb.IsTouchingLayers (groundLayerTest)) {
@@ -39,14 +39,15 @@ public class PlayerSc : MonoBehaviour {
         }
 
         //starts the landing animation
-        if (rb.IsTouchingLayers(groundLayerTest) && isFalling)
+        if (rb.IsTouchingLayers(groundLayerTest) && MyAnimator.GetBool("Falling") == true)
         {
             EndFall();
             Land();
         }
 
         // code to control the running animation and which direction the character should be facing
-        if (moveHorizontal != 0) {
+        if (moveHorizontal != 0)
+        {
             MyAnimator.SetBool("Running", true);
 
             if (moveHorizontal < 0 && !facingRight)
@@ -57,7 +58,6 @@ public class PlayerSc : MonoBehaviour {
             {
                 Flip();
             }
-
         }
         else
         {
@@ -68,10 +68,12 @@ public class PlayerSc : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * Time.deltaTime * walkSpeed, Camera.main.transform);
+            Debug.Log("Moving Left");
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * Time.deltaTime * walkSpeed, Camera.main.transform);
+            Debug.Log("Moving Right");
         }
 
         // code to apply jump if StartJump was called
@@ -116,8 +118,8 @@ public class PlayerSc : MonoBehaviour {
 
     void StartFall()
     {
-        MyAnimator.SetBool("Falling", true);
         MyAnimator.SetBool("Jump", false);
+        MyAnimator.SetBool("Falling", true);
         Debug.Log("Starting fall animation.");
     }
 
