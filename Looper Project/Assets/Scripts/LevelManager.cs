@@ -11,17 +11,20 @@ public class LevelManager : MonoBehaviour
 
     // public variables
     public float autoLoadNextLevelAfter;
- 
 
-//    void Awake() {
-//        if (instance != null && instance != this)
-//        {
-//            Destroy(gameObject);
-//        } else {
-//            instance = this;
-//            DontDestroyOnLoad(gameObject);
-//        }
-//    }
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {

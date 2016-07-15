@@ -31,20 +31,18 @@ public class PlayerSc : MonoBehaviour {
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal") * speed;
         bool isJumping = MyAnimator.GetBool("Jump");
+        bool isFalling = MyAnimator.GetBool("Falling");
         moveVertical = 0f;
 
         if (Input.GetButtonDown ("Jump") && rb.IsTouchingLayers (groundLayerTest)) {
             StartJump();
-		}
-
-        // starts the falling animation
-        if (!rb.IsTouchingLayers(groundLayerTest) && !isJumping)
-        {
-            StartFall();
         }
-        else
+
+        //starts the landing animation
+        if (rb.IsTouchingLayers(groundLayerTest) && isFalling)
         {
             EndFall();
+            Land();
         }
 
         // code to control the running animation and which direction the character should be facing
@@ -100,25 +98,26 @@ public class PlayerSc : MonoBehaviour {
     void StartJump()
     {
         moveVertical = jumpVelocity; // causes the character to jump up with the force entered in jump velocity on the character
-        
+
         MyAnimator.SetBool("Jump", true);
         Debug.Log("Jummpin up");
-        
-        Invoke("EndJumpAnimation", 0.4f); // goes to EndJumpAnimation to make falling work correctly
+
+        //Invoke("EndJumpAnimation", 0.4f); // goes to EndJumpAnimation to make falling work correctly
     }
-    
 
 
-    void EndJumpAnimation()
-    {
-        MyAnimator.SetBool("Jump", false);
-    }
+
+    //void EndJumpAnimation()
+    //{
+    //    MyAnimator.SetBool("Jump", false);
+    //}
 
 
 
     void StartFall()
     {
         MyAnimator.SetBool("Falling", true);
+        MyAnimator.SetBool("Jump", false);
         Debug.Log("Starting fall animation.");
     }
 
@@ -128,5 +127,17 @@ public class PlayerSc : MonoBehaviour {
     {
         MyAnimator.SetBool("Falling", false);
         Debug.Log("Ending fall animation.");
+    }
+
+    void Land()
+    {
+        MyAnimator.SetBool("Landing", true);
+        Debug.Log("Landing.");
+    }
+
+    void EndLand()
+    {
+        MyAnimator.SetBool("Landing", false);
+        Debug.Log("Ending Landing.");
     }
 }
