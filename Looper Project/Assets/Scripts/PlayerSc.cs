@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerSc : MonoBehaviour {
+public class PlayerSc : MonoBehaviour
+{
 
     // Variables ************************************************************
 
@@ -19,17 +20,17 @@ public class PlayerSc : MonoBehaviour {
 
     // Main Methods ************************************************************
 
-    void Start() // attaches this script to the rigidbody that is also a  part of this scripts object.
-	{
-		rb = GetComponent<Rigidbody2D>(); // gets the Rigidbody2D component that is attached to the same asset as this script.
-		MyAnimator = GetComponent<Animator>();
-	}
+    void Start() {
+        rb = GetComponent<Rigidbody2D>(); // gets the Rigidbody2D component that is attached to the same asset as this script.
+		MyAnimator = GetComponent<Animator>(); // attaches this script to the rigidbody that is also a  part of this scripts object.
+    }
 
 
 
-	void Update () // reads in the Vertical/Horizontal input of the player, and applys force to the rigidbody accordingly.
-	{
-		float moveHorizontal = Input.GetAxis("Horizontal") * speed;
+	void Update () 
+        {
+        // reads in the Vertical/Horizontal input of the player, and applys force to the rigidbody accordingly.
+        float moveHorizontal = Input.GetAxis("Horizontal") * speed;
         //bool isJumping = MyAnimator.GetBool("Jump");
         //bool isFalling = MyAnimator.GetBool("Falling");
         moveVertical = 0f;
@@ -39,39 +40,29 @@ public class PlayerSc : MonoBehaviour {
         }
 
         //starts the landing animation
-        if (rb.IsTouchingLayers(groundLayerTest) && MyAnimator.GetBool("Falling") == true)
-        {
+        if (rb.IsTouchingLayers(groundLayerTest) && MyAnimator.GetBool("Falling") == true) {
             EndFall();
             Land();
         }
 
         // code to control the running animation and which direction the character should be facing
-        if (moveHorizontal != 0)
-        {
+        if (moveHorizontal != 0) {
             MyAnimator.SetBool("Running", true);
 
-            if (moveHorizontal < 0 && !facingRight)
-            {
+            if (moveHorizontal < 0 && !facingRight) {
+                Flip();
+            } else if (moveHorizontal > 0 && facingRight) {
                 Flip();
             }
-            else if (moveHorizontal > 0 && facingRight)
-            {
-                Flip();
-            }
-        }
-        else
-        {
+        } else {
             MyAnimator.SetBool("Running", false);
         }
 
         // code to move Rigidbody2d left and right
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             transform.Translate(Vector3.left * Time.deltaTime * walkSpeed, Camera.main.transform);
             Debug.Log("Moving Left");
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
+        } else if (Input.GetKey(KeyCode.RightArrow)) {
             transform.Translate(Vector3.right * Time.deltaTime * walkSpeed, Camera.main.transform);
             Debug.Log("Moving Right");
         }
@@ -86,8 +77,7 @@ public class PlayerSc : MonoBehaviour {
 
     // Custom Methods ************************************************************
 
-    void Flip()
-    {
+    void Flip() {
         // switch the way the player is labelled as facing.
         facingRight = !facingRight;
 
@@ -97,8 +87,7 @@ public class PlayerSc : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-    void StartJump()
-    {
+    void StartJump() {
         moveVertical = jumpVelocity; // causes the character to jump up with the force entered in jump velocity on the character
 
         MyAnimator.SetBool("Jump", true);
@@ -116,8 +105,7 @@ public class PlayerSc : MonoBehaviour {
 
 
 
-    void StartFall()
-    {
+    void StartFall() {
         MyAnimator.SetBool("Jump", false);
         MyAnimator.SetBool("Falling", true);
         Debug.Log("Starting fall animation.");
@@ -125,20 +113,17 @@ public class PlayerSc : MonoBehaviour {
 
 
 
-    void EndFall()
-    {
+    void EndFall() {
         MyAnimator.SetBool("Falling", false);
         Debug.Log("Ending fall animation.");
     }
 
-    void Land()
-    {
+    void Land() {
         MyAnimator.SetBool("Landing", true);
         Debug.Log("Landing.");
     }
 
-    void EndLand()
-    {
+    void EndLand() {
         MyAnimator.SetBool("Landing", false);
         Debug.Log("Ending Landing.");
     }

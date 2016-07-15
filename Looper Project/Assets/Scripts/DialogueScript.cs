@@ -11,8 +11,7 @@ public class DialogueScript : MonoBehaviour
     private Color targetColor;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
       //  spriteImg.enabled = false;
         targetColor = spriteImg.color;
         targetColor.a = 0;
@@ -20,19 +19,16 @@ public class DialogueScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         spriteImg.color = Color.Lerp(spriteImg.color, targetColor, transRate);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
+    void OnTriggerEnter2D(Collider2D collider) {
         Debug.Log("Entered collider");
         targetColor.a = 1f;
     }
 
-    void OnTriggerExit2D(Collider2D collider)
-    {
+    void OnTriggerExit2D(Collider2D collider) {
         Debug.Log("Exited collider");
         targetColor.a = 0;
     }

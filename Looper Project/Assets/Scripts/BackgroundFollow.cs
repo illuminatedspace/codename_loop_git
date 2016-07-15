@@ -9,14 +9,12 @@ public class BackgroundFollow : MonoBehaviour
     private Vector3 playerToBackground;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         playerToBackground = this.transform.position - playerSprite.transform.position;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         this.transform.position = playerSprite.transform.position + playerToBackground;
     }
 }
