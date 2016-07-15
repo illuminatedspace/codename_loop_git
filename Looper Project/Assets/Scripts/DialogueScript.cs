@@ -25,12 +25,14 @@ public class DialogueScript : MonoBehaviour
         spriteImg.color = Color.Lerp(spriteImg.color, targetColor, transRate);
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
         Debug.Log("Entered collider");
         targetColor.a = 1f;
     }
 
-    void OnTriggerExit2D(Collider2D collider) {
+    void OnTriggerExit2D(Collider2D collider)
+    {
         Debug.Log("Exited collider");
         targetColor.a = 0;
     }

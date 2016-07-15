@@ -10,7 +10,6 @@ public class PlayerSc : MonoBehaviour {
     public LayerMask groundLayerTest;
     public float walkSpeed;
 
-
     private float moveVertical = 0f;
     private Rigidbody2D rb; // declares a variable of type RigidBody2D game component.
     private bool facingRight = false;
@@ -39,10 +38,12 @@ public class PlayerSc : MonoBehaviour {
 		}
 
         // starts the falling animation
-        if (!rb.IsTouchingLayers(groundLayerTest) && !isJumping) {
+        if (!rb.IsTouchingLayers(groundLayerTest) && !isJumping)
+        {
             StartFall();
         }
-        else {
+        else
+        {
             EndFall();
         }
 
@@ -50,20 +51,28 @@ public class PlayerSc : MonoBehaviour {
         if (moveHorizontal != 0) {
             MyAnimator.SetBool("Running", true);
 
-            if (moveHorizontal < 0 && !facingRight) {
+            if (moveHorizontal < 0 && !facingRight)
+            {
                 Flip();
-            } else if (moveHorizontal > 0 && facingRight) {
+            }
+            else if (moveHorizontal > 0 && facingRight)
+            {
                 Flip();
             }
 
-        } else {
+        }
+        else
+        {
             MyAnimator.SetBool("Running", false);
         }
 
         // code to move Rigidbody2d left and right
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
             transform.Translate(Vector3.left * Time.deltaTime * walkSpeed, Camera.main.transform);
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
             transform.Translate(Vector3.right * Time.deltaTime * walkSpeed, Camera.main.transform);
         }
 
