@@ -6,6 +6,8 @@ public class PlayerSc : MonoBehaviour {
     public float speed = 10f;   // Variable that multiplies the force applied to the rigidbody.
     public float jumpVelocity = 50f; // Variable determining the sudden vertical force applied to the rigidbody.
     public LayerMask groundLayerTest;
+    public float walkSpeed;
+
 
     private float moveVertical = 0f;
     private Rigidbody2D rb; // Declares a variable of type RigidBody2D game component.
@@ -29,44 +31,58 @@ public class PlayerSc : MonoBehaviour {
 
 
 		float moveHorizontal = Input.GetAxis("Horizontal") * speed;
-        moveVertical = 0f;
         bool isJumping = MyAnimator.GetBool("Jump");
+        moveVertical = 0f;
 
-
-		if (Input.GetButtonDown ("Jump") && rb.IsTouchingLayers (groundLayerTest)) {
-            Jump();
+        if (Input.GetButtonDown ("Jump") && rb.IsTouchingLayers (groundLayerTest)) {
+            StartJump();
 		}
 
         //Sets the landing animator bool to true if the sprite is not touching the ground
         //AND is moving negative vertically
-        if (!rb.IsTouchingLayers (groundLayerTest) && !isJumping)
-        {
-            MyAnimator.SetBool ("Falling", true);
-            Debug.Log("Player Falling");
+        if (!rb.IsTouchingLayers(groundLayerTest) && !isJumping) {
+            StartFall();
+        } else {
+            EndFall();
         }
-        else { MyAnimator.SetBool("Falling", false); }
 
-        if (moveHorizontal != 0)
-        {
+
+
+
+        //Code to control the running animation and which direction the character should be facing
+        if (moveHorizontal != 0) {
             MyAnimator.SetBool("Running", true);
 
-            if (moveHorizontal < 0 && !facingRight)
-            {
+            if (moveHorizontal < 0 && !facingRight) {
                 Flip();
-            }
-            else if (moveHorizontal > 0 && facingRight)
-            {
+            } else if (moveHorizontal > 0 && facingRight) {
                 Flip();
             }
 
-        }
-        else {
+        } else {
             MyAnimator.SetBool("Running", false);
         }
-		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
+
+
+        // Code to move Rigidbody2d left and right
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            transform.Translate(Vector3.left * Time.deltaTime * walkSpeed, Camera.main.transform);
+        } else if (Input.GetKey(KeyCode.RightArrow)) {
+            transform.Translate(Vector3.right * Time.deltaTime * walkSpeed, Camera.main.transform);
+        }
+
+        //Code to apply jump if StartJump was called
+        Vector3 movement = new Vector3 (0.0f, moveVertical, 0.0f);
 		rb.AddForce(movement);
 
 	}
+
+
+
+
+    // Functions*************************************************************
+
+
 
     void Flip()
     {
@@ -79,20 +95,40 @@ public class PlayerSc : MonoBehaviour {
         transform.localScale = theScale;
     }
 
-    void Jump()
+    void StartJump()
     {
         moveVertical = jumpVelocity;
+        
+        MyAnimator.SetBool("Jump", true);
+        Debug.Log("Jummpin up");
+        
+        Invoke("EndJumpAnimation", 0.4f);
+    }
 
-        if (!rb.IsTouchingLayers(groundLayerTest))
-        {
-            MyAnimator.SetBool("Jump", true);
-            Debug.Log("Jummpin up");
-        }
 
-        //else
-        //{
-        //    MyAnimator.SetBool("Jump", false);
-        //    Debug.Log("Player Landed");
-        //}
+
+    void EndJumpAnimation()
+    {
+        MyAnimator.SetBool("Jump", false);
+    }
+
+
+
+
+
+    void StartFall()
+    {
+        MyAnimator.SetBool("Falling", true);
+        Debug.Log("Starting fall animation.");
+    }
+
+
+
+
+
+    void EndFall()
+    {
+        MyAnimator.SetBool("Falling", false);
+        Debug.Log("Ending fall animation.");
     }
 }
