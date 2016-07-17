@@ -59,10 +59,10 @@ public class PlayerSc : MonoBehaviour
         }
 
         // code to move Rigidbody2d left and right
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (moveHorizontal < 0) {
             transform.Translate(Vector3.left * Time.deltaTime * walkSpeed, Camera.main.transform);
             Debug.Log("Moving Left");
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
+        } else if (moveHorizontal > 0) {
             transform.Translate(Vector3.right * Time.deltaTime * walkSpeed, Camera.main.transform);
             Debug.Log("Moving Right");
         }
