@@ -32,10 +32,11 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void Update () {
+        float movement = Input.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
         bool grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        ObjectMovement(Input.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime);
-        HandleAnimation(grounded);
+        ObjectMovement(movement);
+        HandleAnimation(grounded,movement);
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
             PlayerJump();
@@ -53,11 +54,17 @@ public class PlayerScript : MonoBehaviour {
     // Non-Update Functions
 
     void ObjectMovement(float horInput) {
-        rb.transform.Translate(new Vector2(horInput, 0));
+        rb.transform.Translate(new Vector2 (horInput, 0));
     }
 
-    void HandleAnimation(bool groundCheck) {
-        myAnimator.SetFloat("Speed", rb.velocity.x);
+    void HandleAnimation(bool groundCheck, float moveValue) {
+        if(moveValue < 0 && facingRight) {
+            FlipCharacterDirection();
+        } else if (moveValue > 0 && !facingRight) {
+            FlipCharacterDirection();
+        }
+
+        myAnimator.SetFloat("Speed", Mathf.Abs(moveValue));
         myAnimator.SetBool("Grounded", groundCheck);
     }
 
@@ -74,12 +81,22 @@ public class PlayerScript : MonoBehaviour {
         jumpTimeCounter = jumpTimeMax;
     }
 
+    void FlipCharacterDirection() {
+        // Switch the way the player is labelled as facing.
+        facingRight = !facingRight;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
 
     // private variable initializer
     void InitializePrivateVariables() {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        facingRight = false;
+        facingRight = true;
         groundCheckRadius = 0.1f;
     }
 
