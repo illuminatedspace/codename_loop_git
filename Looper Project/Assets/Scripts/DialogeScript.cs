@@ -23,19 +23,37 @@ public class DialogeScript : MonoBehaviour
     void Update()
     {
         spriteImg.color = Color.Lerp(spriteImg.color, targetColor, transRate);
+
+        HandleTextScript(Mathf.Clamp(spriteImg.color.a,0f,1f));
+    }
+
+    void HandleTextScript(float currentBoxColor) {
+        Debug.Log("Current alpha color of DialogueBox img is: " + currentBoxColor);
+
+        if (currentBoxColor >= 0.98f) {
+            TextScript.colorChange = true;
+        } else if (currentBoxColor <= 0.4f) {
+            TextScript.colorChange = false;
+        }
+    }
+
+    void ShowMyDialogueBox() {
+        targetColor.a = 1f;
+        TextScript.textChange = true;
+    }
+
+    void HideMyDialogueBox() {
+        targetColor.a = 0;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
         Debug.Log("Entered collider");
-        targetColor.a = 1f;
-        TextScript.colorChange = true;
-        TextScript.textChange = true;
+        ShowMyDialogueBox();
     }
 
     void OnTriggerExit2D(Collider2D collider) {
         Debug.Log("Exited collider");
-        targetColor.a = 0;
-        TextScript.colorChange = false;
+        HideMyDialogueBox();
     }
 
 }

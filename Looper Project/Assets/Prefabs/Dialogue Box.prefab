@@ -11,7 +11,7 @@ GameObject:
   - 222: {fileID: 22269362}
   - 114: {fileID: 11482244}
   - 114: {fileID: 11419946}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 223: {fileID: 22340456}
   - 114: {fileID: 11414006}
   - 114: {fileID: 11498318}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1418f5fc0b41a43875e381201ca40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 11482244}
-  dialogueText: []
+  dialogueTextList:
+  - Hello
+  - I am
+  - Greg
 --- !u!114 &11482244
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,15 +4,14 @@ using UnityEngine.UI;
 
 public class TextScript : MonoBehaviour {
     //publc variables
-    public Text text;
-    public string[] dialogueText;
-    public static bool colorChange;
-    public static bool textChange;
+    public string[] dialogueTextList;
+
+    public static bool colorChange, textChange;
 
     //private variables
+    private Text text;
     private Color targetColor;
-    private int loopCount;
-    private int loopLimit;
+    private int loopCount, loopLimit;
 
     // Used before initialization
     void Awake () {
@@ -22,12 +21,8 @@ public class TextScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        loopCount = 0;
-        loopLimit = dialogueText.Length;
+        InitializePrivateVariables();
         Debug.Log("loopLimit is " + loopLimit);
-        targetColor = text.color;
-        targetColor.a = 0f;
-        text.color = targetColor;
 	}
 	
 	// Update is called once per frame
@@ -57,7 +52,7 @@ public class TextScript : MonoBehaviour {
 
     void cycletText() {
         Debug.Log("cycle text has occured! loopCount is: " + loopCount);
-        text.text = dialogueText[loopCount];
+        text.text = dialogueTextList[loopCount];
         if (loopCount >= loopLimit - 1) {
             Debug.Log("loop cycle reset!!!");
             loopCount = 0;
@@ -65,5 +60,17 @@ public class TextScript : MonoBehaviour {
             loopCount++;
         }
         textChange = false;
+    }
+
+    // Initializes private variables
+    void InitializePrivateVariables() {
+        text = GetComponent<Text>();
+
+        loopCount = 0;
+        loopLimit = dialogueTextList.Length;
+
+        targetColor = text.color;
+        targetColor.a = 0f;
+        text.color = targetColor;
     }
 }
