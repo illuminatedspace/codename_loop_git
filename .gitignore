@@ -28,3 +28,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Looper Project/Temp/UnityLockfile
+Looper Project/Library/CrashedAssetImports.txt

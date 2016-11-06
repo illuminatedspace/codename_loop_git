@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &156440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 445116}
+  m_Layer: 0
+  m_Name: Ground Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &160292
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,10 +24,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 451558}
   - 212: {fileID: 21210906}
-  - 114: {fileID: 11494184}
   - 50: {fileID: 5042294}
   - 95: {fileID: 9564748}
   - 61: {fileID: 6162882}
+  - 114: {fileID: 11415608}
   m_Layer: 0
   m_Name: PlayerSc
   m_TagString: Untagged
@@ -20,6 +35,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &445116
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 451558}
+  m_RootOrder: 0
 --- !u!4 &451558
 Transform:
   m_ObjectHideFlags: 1
@@ -30,7 +58,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 445116}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5042294
@@ -49,7 +78,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6162882
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -81,7 +110,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11494184
+--- !u!114 &11415608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,14 +118,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 160292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0971b0c5800866345a6810f4d2a5ca36, type: 3}
+  m_Script: {fileID: 11500000, guid: cf389daffa9210841807be497ad78f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpVelocity: 150
-  groundLayerTest:
+  horizontalSpeed: 10
+  jumpForce: 5
+  jumpTimeMax: 0
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  groundCheck: {fileID: 445116}
 --- !u!212 &21210906
 SpriteRenderer:
   m_ObjectHideFlags: 1

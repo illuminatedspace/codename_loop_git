@@ -128,6 +128,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &216833581 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11415608, guid: b76514531883e0d468826c49b14b8c2f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1174153995}
+  m_Script: {fileID: 11500000, guid: cf389daffa9210841807be497ad78f0d, type: 3}
 --- !u!1001 &493200266
 Prefab:
   m_ObjectHideFlags: 0
@@ -167,6 +173,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6163010, guid: f77f31c32f9104b4d87f31b7626a4012, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 350e2b37f0fb2cf48a374e9297a36393, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f77f31c32f9104b4d87f31b7626a4012, type: 2}
   m_IsPrefabParent: 0
@@ -240,7 +250,7 @@ Prefab:
     - target: {fileID: 11436282, guid: 4291401cf4330db4a9c3350c5134eb69, type: 2}
       propertyPath: playerSprite
       value: 
-      objectReference: {fileID: 1312595479}
+      objectReference: {fileID: 216833581}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4291401cf4330db4a9c3350c5134eb69, type: 2}
   m_IsPrefabParent: 0
@@ -327,22 +337,12 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 160292, guid: b76514531883e0d468826c49b14b8c2f, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5042294, guid: b76514531883e0d468826c49b14b8c2f, type: 2}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b76514531883e0d468826c49b14b8c2f, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1312595479 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11494184, guid: b76514531883e0d468826c49b14b8c2f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1174153995}
-  m_Script: {fileID: 11500000, guid: 0971b0c5800866345a6810f4d2a5ca36, type: 3}
 --- !u!1 &1484389176
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80851a3b15fa28c4c8cd7e2963b084ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 1312595479}
 --- !u!212 &1484389178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -575,6 +574,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 181422, guid: c26d0fb1487fe3840a00c46784d32bb0, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145122, guid: c26d0fb1487fe3840a00c46784d32bb0, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

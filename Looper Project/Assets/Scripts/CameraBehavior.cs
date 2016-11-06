@@ -3,17 +3,18 @@ using System.Collections;
 
 public class CameraBehavior : MonoBehaviour {
 
-	public PlayerSc playerSprite;
+	private Transform playerSprite;
 
 	private Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
-		offset = transform.position - playerSprite.transform.position;
+        playerSprite = GameObject.FindObjectOfType<PlayerScript>().transform;
+		offset = transform.position - playerSprite.position;
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		transform.position = playerSprite.transform.position + offset;
+		transform.position = playerSprite.position + offset;
 	}
 }
